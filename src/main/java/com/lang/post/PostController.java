@@ -15,6 +15,7 @@ import java.util.List;
  */
 
 @Controller
+@RequestMapping("api")
 public class PostController {
 
     @Autowired
@@ -41,6 +42,21 @@ public class PostController {
         HttpHeaders headers = new HttpHeaders();
         headers.setLocation(builder.path("/post/{id}").buildAndExpand(post.getId()).toUri());
         return new ResponseEntity<Void>(headers, HttpStatus.CREATED);
+    }
+
+    @PutMapping("post")
+    public ResponseEntity<Void> updatePost(@RequestBody Post post, UriComponentsBuilder builder) {
+        postService.updatePost(post);
+        HttpHeaders headers = new HttpHeaders();
+        headers.setLocation(builder.path("/post/{id}").buildAndExpand(post.getId()).toUri());
+        return new ResponseEntity<Void>(headers, HttpStatus.OK);
+    }
+
+    @DeleteMapping("post/{post_id}")
+    public ResponseEntity<Void> deletePost(@PathVariable("post_id") String post_id) {
+        postService.deletePost(post_id);
+        // may be redirection... TBD
+        return new ResponseEntity<Void>(HttpStatus.OK);
     }
 
 }
