@@ -24,14 +24,14 @@ public class AdminDAO implements IAdminDAO {
     @Override
     public Boolean auth(Admin admin) {
         String query = "FROM Admin as admin WHERE admin.user_name = ?1";
-        List<Admin> list = manager.createQuery(query).setParameter(1, admin.getUsername()).getResultList();
+        List<Admin> list = manager.createQuery(query).setParameter(1, admin.getUser_name()).getResultList();
         if (list.size() == 0) return false;
 
         Admin _admin = (Admin) list.get(0);
         String hash;
         try {
             MessageDigest md = MessageDigest.getInstance("MD5");
-            byte[] inputByteArray = admin.getPassword().getBytes();
+            byte[] inputByteArray = (admin.getPassword()+"lang").getBytes();
             byte[] bytesOfDigest = md.digest(inputByteArray);
             hash = DatatypeConverter.printHexBinary(bytesOfDigest).toLowerCase();
 
@@ -41,4 +41,21 @@ public class AdminDAO implements IAdminDAO {
 
         return hash.equals(_admin.getPassword());
     }
+
+    @Override
+    public void create(Admin admin) {
+        String _pass = "";
+        try {
+            MessageDigest md = MessageDigest.getInstance("MD5");
+            byte[] inputByteArray = (admin.getPassword()+"lang").getBytes();
+            byte[] bytesOfDigest = md.digest(inputByteArray);
+            _pass = DatatypeConverter.printHexBinary(bytesOfDigest).toLowerCase();
+
+        } catch (NoSuchAlgorithmException e) {
+
+        }
+        admin.setPassword(_pass);
+        manager.persist(admin);
+    }
+
 }

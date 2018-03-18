@@ -25,7 +25,7 @@ public class Admin implements Serializable{
         return user_id;
     }
 
-    public String getUsername() {
+    public String getUser_name() {
         return user_name;
     }
 
@@ -37,8 +37,8 @@ public class Admin implements Serializable{
         this.user_id = user_id;
     }
 
-    public void setUsername(String username) {
-        this.user_name = username;
+    public void setUser_name(String user_name) {
+        this.user_name = user_name;
     }
 
     public void setPassword(String password) {

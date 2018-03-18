@@ -6,5 +6,5 @@ package com.lang.admin;
 public interface IAdminService {
 
     boolean auth(Admin admin);
-
+    void create(Admin admin);
 }

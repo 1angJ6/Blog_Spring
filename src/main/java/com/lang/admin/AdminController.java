@@ -29,13 +29,11 @@ public class AdminController {
         HttpHeaders headers = new HttpHeaders();
         headers.setContentType(MediaType.APPLICATION_JSON);
         if (adminService.auth(admin)) {
-            String status = "{\"status\": pass}";
+            String status = "{\"status\": \"pass\"}";
             return new ResponseEntity<String>(status, headers, HttpStatus.OK);
         } else {
             String status = "{\"status\": fail}";
-            return new ResponseEntity<String>(status, headers, HttpStatus.OK);
+            return new ResponseEntity<String>(status, headers, HttpStatus.UNAUTHORIZED);
         }
-
     }
-
 }

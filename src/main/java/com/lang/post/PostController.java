@@ -3,6 +3,7 @@ package com.lang.post;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpHeaders;
 import org.springframework.http.HttpStatus;
+import org.springframework.http.MediaType;
 import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.*;
@@ -34,14 +35,16 @@ public class PostController {
     }
 
     @PostMapping("post")
-    public ResponseEntity<Void> addPost(@RequestBody Post post, UriComponentsBuilder builder) {
+    public ResponseEntity<String> addPost(@RequestBody Post post, UriComponentsBuilder builder) {
         boolean isSuccessful = postService.addPost(post);
-        if (!isSuccessful) {
-            return new ResponseEntity<Void>(HttpStatus.CONFLICT);
-        }
         HttpHeaders headers = new HttpHeaders();
-        headers.setLocation(builder.path("/post/{id}").buildAndExpand(post.getId()).toUri());
-        return new ResponseEntity<Void>(headers, HttpStatus.CREATED);
+        headers.setContentType(MediaType.APPLICATION_JSON);
+        if (!isSuccessful) {
+            String status = "{\"status\": \"Post is duplicated...\"}";
+            return new ResponseEntity<String>(status, headers, HttpStatus.CONFLICT);
+        }
+        String status = "{\"status\": \"create successfully.\", \"post_id\": \""+ post.getId() +"\"}";
+        return new ResponseEntity<String>(status, headers, HttpStatus.CREATED);
     }
 
     @PutMapping("post")
