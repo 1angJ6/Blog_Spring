@@ -22,3 +22,13 @@ nbbuild/
 dist/
 nbdist/
 .nb-gradle/
+
+### Angular4 ###
+# compiled output
+/Front_End_Angular4/client/dist
+/Front_End_Angular4/client/tmp
+/Front_End_Angular4/client/out-tsc
+
+# dependencies
+/Front_End_Angular4/client/node_modules
+/node_modules
