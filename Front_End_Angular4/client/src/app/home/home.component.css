@@ -1,0 +1,67 @@
+#header
+{
+	position: relative;
+	width: 100%;
+	height: 100%;
+	min-height: 600px;
+	padding-bottom: 100px;
+	background-color: #111;
+	background-repeat: no-repeat;
+	background-position: center center;
+	background-size: cover;
+	font-size: 100%;
+	font-family: JosefinSans-Bold;
+}
+
+.nav
+{
+  position: relative;
+  z-index: 5;
+  font-size: 20px;
+}
+
+.nav a
+{
+  text-decoration: none;
+  color: #999;
+  margin-left: 35px;
+  display: inline-block;
+  height: 60px;
+  line-height: 60px;
+}
+.nav a:hover
+{
+  text-decoration: none;
+  color: black;
+}
+
+.text-middle
+{
+	text-align: center;
+}
+
+.text-right
+{
+	text-align: right;
+	padding-right: 50px;
+	color: rgba(255, 255, 255, 1);
+}
+
+.title
+{
+	position: relative;
+	z-index: 5;
+	margin-top: 15%;
+	color: white;
+	font-size: 50px;
+}
+
+.background-overlay
+{
+	position: absolute;
+	top: 0;
+	z-index: 2;
+	width: 100%;
+	height: 100%;
+	background: rgba(0, 0, 0, 0.5);
+}

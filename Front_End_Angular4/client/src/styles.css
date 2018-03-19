@@ -1,1 +1,30 @@
 /* You can add global styles to this file, and also import other style files */
+@font-face {
+  font-family: "JosefinSans-Bold";
+  font-style: normal;
+  font-weight: normal;
+  src: url("/assert/fonts/JosefinSans-Bold.ttf") format("truetype");
+}
+
+@font-face {
+  font-family: "JosefinSans-SemiBold";
+  font-style: normal;
+  font-weight: normal;
+  src: url("/assert/fonts/JosefinSans-SemiBold.ttf") format("truetype");
+}
+
+html
+{
+  height: 100%;
+  font-size: 62.5%;
+}
+
+body
+{
+  height: 100%;
+  font-size: 15px;
+  font-weight: 400;
+  line-height: 1.6;
+  color: #111;
+  background-color: #f6f6f6
+}
