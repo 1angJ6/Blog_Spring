@@ -1,0 +1,57 @@
+<nav class="nav">
+    <div class="container-fluid">
+      <div class = "row">
+        <div class = "col-sm-5 hidden-xs">
+              <a title="article" style="color: #999;">Article</a>
+              <a href="#" title="gallery">Gallery</a>
+              <a href="#">About Me</a>
+        </div>
+        <div class = "col-sm-2 text-middle">
+          <img src="assets/img/icon.png" width = "60px" height = "60px" />
+        </div>
+      </div>
+    </div>
+</nav>
+
+<div *ngIf = "list_posts">
+  <div class="container-fluid">
+    <div class="row">
+      <div class = "col-sm-4 hidden-xs"></div>
+      <div class = "col-sm-4 col-xs-12">
+          <div *ngFor = "let post of posts" class="post_block">
+            <a href="/post/{{post.id}}">
+              <div class="title">{{post.title}}</div>
+            </a>
+            <div class="date_tag">{{post.created | date:'yyyy-MM-dd'}} &nbsp;&nbsp;&nbsp;&nbsp;TAG: {{post.tag}}</div>
+            <a href="/post/{{post.id}}">
+                <div class="content">{{post.content | chop: 20}}</div>
+            </a>
+            <hr>
+          </div>
+      </div>
+      <div class = "col-sm-4 hidden-xs"></div>
+    </div>
+  </div>
+</div>
+
+<div *ngIf = "!list_posts" style="height:100%;">
+    <div class="container-fluid" style="height:100%;">
+        <div class="row" style="height:100%;">
+          <div class = "col-sm-2 hidden-xs tableOfContent">
+              <a href="/posts"><div>Table of Contents</div></a>
+              <ul>
+                <li *ngFor = "let post of posts" class="">
+                    <a href="/post/{{post.id}}">{{post.title}}</a>
+                </li>
+              </ul>
+          </div>
+          <div class = "col-sm-10 col-xs-12">
+              <div class="postTitle">{{post.title}}</div>
+              <div class="postInfo">
+                  {{post.created | date:'yyyy-MM-dd'}} - TAG: {{post.tag}} - Click: {{post.click}}
+              </div>
+              <div class="postContent">{{post.content}}</div>
+          </div>
+        </div>
+      </div>
+</div>

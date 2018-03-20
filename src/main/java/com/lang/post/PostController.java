@@ -16,6 +16,7 @@ import java.util.List;
  */
 
 @Controller
+@CrossOrigin("http://localhost:4200")
 @RequestMapping("api")
 public class PostController {
 
@@ -25,7 +26,12 @@ public class PostController {
     @GetMapping("post/{post_id}")
     public ResponseEntity<Post> getPostById(@PathVariable("post_id") String post_id) {
         Post post = postService.getPostById(post_id);
-        return new ResponseEntity<Post>(post, HttpStatus.OK);
+        if (post != null) {
+            return new ResponseEntity<Post>(post, HttpStatus.OK);
+        }
+        else {
+            return new ResponseEntity<Post>(HttpStatus.NOT_FOUND);
+        }
     }
 
     @GetMapping("posts")
