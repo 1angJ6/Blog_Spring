@@ -5,10 +5,12 @@ import org.springframework.http.HttpHeaders;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.MediaType;
 import org.springframework.http.ResponseEntity;
+import org.springframework.session.data.redis.config.annotation.web.http.EnableRedisHttpSession;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.util.UriComponentsBuilder;
 
+import javax.servlet.http.HttpSession;
 import java.util.List;
 
 /**
@@ -17,6 +19,7 @@ import java.util.List;
 
 @Controller
 @CrossOrigin("http://localhost:4200")
+//@EnableRedisHttpSession
 @RequestMapping("api")
 public class PostController {
 

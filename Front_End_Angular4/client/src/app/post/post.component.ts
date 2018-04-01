@@ -11,7 +11,7 @@ import { Post } from '../post';
 export class PostComponent implements OnInit {
 
   private post_id: string;
-  private list_posts: boolean;
+  public list_posts: boolean;
 
   private posts: Post[];
   private post: Post;

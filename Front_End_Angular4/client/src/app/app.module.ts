@@ -13,6 +13,7 @@ import { PostService } from './app-service/post.service';
 import { NotFoundComponent } from './not-found/not-found.component';
 
 import { ChopPipe } from './pipe/chop.pipe';
+import { AuthService } from './app-service/auth.service';
 
 @NgModule({
   declarations: [
@@ -29,7 +30,7 @@ import { ChopPipe } from './pipe/chop.pipe';
     HttpClientModule,
     AppRoutingModule
   ],
-  providers: [PostService],
+  providers: [PostService, AuthService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
