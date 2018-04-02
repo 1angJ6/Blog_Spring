@@ -11,7 +11,8 @@ const routes: Routes = [
     { path: 'login', component: LoginComponent},
     { path: 'posts', component: PostComponent },
     { path: 'post/:post_id', component: PostComponent },
-    { path: 'oops', component: NotFoundComponent }
+    { path: 'oops', component: NotFoundComponent },
+    {path: '**', redirectTo: '/oops'}
 ]
 
 @NgModule({
